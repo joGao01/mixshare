@@ -15,7 +15,7 @@ require('dotenv').config();
 const app = express();
 
 // ... other app.use middleware 
-app.use(express.static(path.join(__dirname, "client", "build")))
+app.use(express.static(path.join(__dirname, "..", "client", "public")))
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -56,7 +56,7 @@ app.use('/', indexRouter);
 // ...
 // Right before your app.listen(), add this:
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "client", "public", "index.html"));
 });
 
 app.listen(+process.env.PORT || 3001, () => {
